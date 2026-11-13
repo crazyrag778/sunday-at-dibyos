@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="400" viewBox="0 0 1600 400">
+  <defs>
+    <pattern id="confetti" width="70" height="70" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="12" r="3" fill="#f5c15d" opacity=".8"/>
+      <path d="M47 8l5 8h-10z" fill="#c91618" opacity=".7"/>
+      <circle cx="56" cy="53" r="2" fill="#064b38" opacity=".35"/>
+      <path d="M17 49l5-5m-5 0 5 5" stroke="#f5c15d" stroke-width="2" stroke-linecap="round"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="400" fill="#064b38"/>
+  <rect x="18" y="18" width="1564" height="364" rx="8" fill="#f7f4e8"/>
+  <rect x="18" y="18" width="1564" height="364" rx="8" fill="url(#confetti)" opacity=".38"/>
+
+  <g fill="#064b38">
+    <circle cx="18" cy="50" r="18"/><circle cx="18" cy="120" r="18"/>
+    <circle cx="18" cy="190" r="18"/><circle cx="18" cy="260" r="18"/>
+    <circle cx="18" cy="330" r="18"/>
+    <circle cx="1582" cy="50" r="18"/><circle cx="1582" cy="120" r="18"/>
+    <circle cx="1582" cy="190" r="18"/><circle cx="1582" cy="260" r="18"/>
+    <circle cx="1582" cy="330" r="18"/>
+    <circle cx="90" cy="18" r="18"/><circle cx="160" cy="18" r="18"/>
+    <circle cx="230" cy="18" r="18"/><circle cx="300" cy="18" r="18"/>
+    <circle cx="370" cy="18" r="18"/><circle cx="440" cy="18" r="18"/>
+    <circle cx="510" cy="18" r="18"/><circle cx="580" cy="18" r="18"/>
+    <circle cx="650" cy="18" r="18"/><circle cx="720" cy="18" r="18"/>
+    <circle cx="790" cy="18" r="18"/><circle cx="860" cy="18" r="18"/>
+    <circle cx="930" cy="18" r="18"/><circle cx="1000" cy="18" r="18"/>
+    <circle cx="1070" cy="18" r="18"/><circle cx="1140" cy="18" r="18"/>
+    <circle cx="1210" cy="18" r="18"/><circle cx="1280" cy="18" r="18"/>
+    <circle cx="1350" cy="18" r="18"/><circle cx="1420" cy="18" r="18"/>
+    <circle cx="1490" cy="18" r="18"/>
+    <circle cx="90" cy="382" r="18"/><circle cx="160" cy="382" r="18"/>
+    <circle cx="230" cy="382" r="18"/><circle cx="300" cy="382" r="18"/>
+    <circle cx="370" cy="382" r="18"/><circle cx="440" cy="382" r="18"/>
+    <circle cx="510" cy="382" r="18"/><circle cx="580" cy="382" r="18"/>
+    <circle cx="650" cy="382" r="18"/><circle cx="720" cy="382" r="18"/>
+    <circle cx="790" cy="382" r="18"/><circle cx="860" cy="382" r="18"/>
+    <circle cx="930" cy="382" r="18"/><circle cx="1000" cy="382" r="18"/>
+    <circle cx="1070" cy="382" r="18"/><circle cx="1140" cy="382" r="18"/>
+    <circle cx="1210" cy="382" r="18"/><circle cx="1280" cy="382" r="18"/>
+    <circle cx="1350" cy="382" r="18"/><circle cx="1420" cy="382" r="18"/>
+    <circle cx="1490" cy="382" r="18"/>
+  </g>
+
+  <path d="M1070 72v256" fill="none" stroke="#064b38" stroke-width="4" stroke-dasharray="3 12" opacity=".65"/>
+  <text x="126" y="164" fill="#c91618" font-family="DejaVu-Serif" font-size="80" font-style="italic" font-weight="bold">Sunday @ Dibyo's</text>
+  <text x="132" y="220" fill="#064b38" font-family="DejaVu-Sans" font-size="23" font-weight="bold" letter-spacing="7">YOU'RE INVITED!</text>
+  <path d="M132 248h122" stroke="#f5c15d" stroke-width="6" stroke-linecap="round"/>
+  <text x="132" y="303" fill="#344f42" font-family="DejaVu-Serif" font-size="30">Sunday, November 29, 2026</text>
+  <text x="132" y="339" fill="#68796d" font-family="DejaVu-Sans" font-size="17" letter-spacing="3">PARTY • MEMORIES • GOOD TIMES</text>
+
+  <g transform="translate(1240 85)">
+    <circle cx="145" cy="115" r="112" fill="#f1ead6"/>
+    <path d="M118 160 194 83l38 38-77 77-48 18z" fill="#f5c15d" stroke="#064b38" stroke-width="5" stroke-linejoin="round"/>
+    <path d="m108 174 31 30-40 15 9-45z" fill="#c91618" stroke="#064b38" stroke-width="4" stroke-linejoin="round"/>
+    <path d="m190 87 28-29m-8 52 38-12m-84-30 2-38m-28 60-33-23m4 49-40-2" fill="none" stroke="#064b38" stroke-width="7" stroke-linecap="round"/>
+    <path d="m220 36 8-16 8 16 16 8-16 8-8 16-8-16-16-8z" fill="#f5c15d"/>
+    <path d="m75 62 5-10 5 10 10 5-10 5-5 10-5-10-10-5z" fill="#c91618"/>
+    <circle cx="251" cy="110" r="7" fill="#c91618"/>
+    <circle cx="84" cy="147" r="6" fill="#f5c15d"/>
+    <path d="M190 215q18-20 36 0m-18-18v35" fill="none" stroke="#064b38" stroke-width="5" stroke-linecap="round"/>
+    <path d="m175 214-10 12m70-12 10 12" stroke="#c91618" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>
