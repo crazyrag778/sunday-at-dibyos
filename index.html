@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#064b38">
+    <meta
+      name="description"
+      content="Welcome to Sunday At Dibyo's — find the party photo submission, review, and host links."
+    >
+    <title>Sunday @ Dibyo's — You're Invited!</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --evergreen: #064b38;
+        --evergreen-deep: #033b2d;
+        --cream: #f7f4e8;
+        --red: #c91618;
+        --gold: #f5c15d;
+        --ink: #173c31;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--ink);
+        background-color: var(--evergreen);
+        background-image:
+          radial-gradient(circle at 12% 18%, rgb(245 193 93 / 24%) 0 2px, transparent 3px),
+          radial-gradient(circle at 86% 30%, rgb(255 255 255 / 20%) 0 2px, transparent 3px),
+          radial-gradient(circle at 75% 82%, rgb(245 193 93 / 22%) 0 2px, transparent 3px);
+        background-size: 88px 88px, 112px 112px, 136px 136px;
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: clamp(18px, 4vw, 56px);
+      }
+
+      .invitation {
+        position: relative;
+        isolation: isolate;
+        width: min(100%, 1120px);
+        padding: clamp(24px, 5vw, 62px);
+        overflow: hidden;
+        background: var(--cream);
+        box-shadow: 0 24px 70px rgb(0 0 0 / 25%);
+        animation: ticket-arrive 750ms cubic-bezier(.2, .8, .2, 1) both;
+      }
+
+      .invitation::before,
+      .invitation::after {
+        position: absolute;
+        z-index: -1;
+        right: 0;
+        left: 0;
+        height: 18px;
+        content: "";
+        background: radial-gradient(circle at 18px 18px, var(--evergreen) 0 14px, transparent 15px)
+          repeat-x;
+        background-size: 40px 20px;
+      }
+
+      .invitation::before {
+        top: 0;
+        transform: rotate(180deg);
+      }
+
+      .invitation::after {
+        bottom: 0;
+      }
+
+      .ticket-content {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 560px;
+        padding: clamp(16px, 3vw, 30px) 0;
+      }
+
+      .main-ticket {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        width: fit-content;
+        margin-bottom: clamp(30px, 6vw, 62px);
+        color: var(--evergreen);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        border: 1.5px solid var(--evergreen);
+        border-radius: 50%;
+        color: var(--red);
+        font-size: 1rem;
+        letter-spacing: 0;
+      }
+
+      .welcome {
+        margin: 0;
+        color: var(--red);
+        font-size: clamp(2.8rem, 7.5vw, 6.1rem);
+        font-style: italic;
+        font-weight: 700;
+        letter-spacing: -0.055em;
+        line-height: 0.98;
+        text-wrap: balance;
+        animation: text-arrive 650ms 180ms both;
+      }
+
+      .welcome-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) clamp(130px, 19vw, 205px);
+        align-items: center;
+        gap: clamp(18px, 4vw, 48px);
+      }
+
+      .welcome-art {
+        display: grid;
+        aspect-ratio: 1;
+        place-items: center;
+        border-radius: 50%;
+        background: radial-gradient(circle, #f1e8cf 0 57%, transparent 58%);
+      }
+
+      .welcome-art img {
+        display: block;
+        width: 86%;
+        height: auto;
+        filter: drop-shadow(0 8px 7px rgb(23 60 49 / 12%));
+        animation: party-pop 3.2s ease-in-out infinite;
+      }
+
+      .welcome span {
+        display: block;
+        margin-top: 0.16em;
+        color: var(--evergreen);
+        font-size: 0.58em;
+        letter-spacing: -0.025em;
+      }
+
+      .intro {
+        max-width: 520px;
+        margin: 26px 0 0;
+        color: #53675c;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.65;
+        animation: text-arrive 650ms 300ms both;
+      }
+
+      .quick-links {
+        margin-top: auto;
+        padding-top: clamp(38px, 6vw, 68px);
+        animation: text-arrive 650ms 400ms both;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 18px;
+        color: var(--evergreen);
+        font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+        font-style: italic;
+      }
+
+      .section-heading::after {
+        height: 1px;
+        flex: 1;
+        content: "";
+        background: rgb(6 75 56 / 24%);
+      }
+
+      .link-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .quick-link {
+        display: flex;
+        min-height: 112px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 16px;
+        border: 1px solid rgb(6 75 56 / 18%);
+        border-radius: 12px;
+        color: var(--evergreen);
+        background: rgb(255 255 255 / 48%);
+        text-decoration: none;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          border-color 180ms ease,
+          background-color 180ms ease;
+      }
+
+      .quick-link:hover,
+      .quick-link:focus-visible {
+        transform: translateY(-5px) rotate(-1deg);
+        border-color: var(--gold);
+        outline: none;
+        background: #fffdf6;
+        box-shadow: 0 10px 24px rgb(6 75 56 / 12%);
+      }
+
+      .quick-link:focus-visible {
+        outline: 3px solid var(--red);
+        outline-offset: 3px;
+      }
+
+      .link-icon {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 50%;
+        color: var(--red);
+        background: #f6e8d1;
+      }
+
+      .link-icon svg {
+        width: 21px;
+        height: 21px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      .link-label {
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+        font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .link-copy {
+        display: block;
+        min-width: 0;
+      }
+
+      .link-title-row {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .link-subtext {
+        display: block;
+        margin-top: 5px;
+        color: #64746b;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.76rem;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+
+      .link-arrow {
+        display: inline-block;
+        color: var(--red);
+        transition: transform 180ms ease;
+      }
+
+      .quick-link:hover .link-arrow,
+      .quick-link:focus-visible .link-arrow {
+        transform: translateX(4px);
+      }
+
+      .sparkle {
+        position: absolute;
+        z-index: -1;
+        color: var(--gold);
+        animation: twinkle 2.8s ease-in-out infinite;
+      }
+
+      .sparkle-one {
+        top: 18%;
+        right: 19%;
+        font-size: 1.5rem;
+      }
+
+      .sparkle-two {
+        right: 4%;
+        bottom: 33%;
+        font-size: 1rem;
+        animation-delay: 700ms;
+      }
+
+      .footer-note {
+        margin: 25px 0 0;
+        color: #728078;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.74rem;
+        letter-spacing: 0.06em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .art-credit {
+        margin: 8px 0 0;
+        color: #9da69f;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.68rem;
+        text-align: center;
+      }
+
+      .art-credit a {
+        color: inherit;
+        text-underline-offset: 2px;
+      }
+
+      @keyframes ticket-arrive {
+        from {
+          opacity: 0;
+          transform: translateY(24px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes text-arrive {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes twinkle {
+        0%, 100% {
+          opacity: 0.45;
+          transform: scale(0.85) rotate(0);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.15) rotate(15deg);
+        }
+      }
+
+      @keyframes party-pop {
+        0%, 100% {
+          transform: rotate(-4deg) translateY(0);
+        }
+        50% {
+          transform: rotate(4deg) translateY(-7px);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .page-shell {
+          padding: 14px;
+        }
+
+        .invitation {
+          padding: 24px clamp(18px, 5vw, 30px);
+        }
+
+        .ticket-content {
+          grid-template-columns: minmax(0, 1fr);
+          min-height: auto;
+          padding: 12px 0 18px;
+        }
+
+        .brand {
+          margin-bottom: 38px;
+          font-size: 0.67rem;
+          letter-spacing: 0.11em;
+        }
+
+        .welcome {
+          font-size: clamp(2.7rem, 12vw, 5rem);
+        }
+
+        .welcome-hero {
+          grid-template-columns: minmax(0, 1fr) clamp(76px, 24vw, 116px);
+          gap: 8px;
+        }
+
+        .intro {
+          margin-top: 18px;
+        }
+
+        .quick-links {
+          padding-top: 42px;
+        }
+
+        .link-list {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .quick-link {
+          min-height: 70px;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 13px;
+          padding: 12px;
+        }
+
+        .link-copy {
+          flex: 1;
+        }
+
+        .link-title-row {
+          justify-content: space-between;
+          gap: 8px;
+        }
+
+        .link-label {
+          font-size: 1rem;
+          white-space: nowrap;
+        }
+
+        .link-arrow {
+          font-size: 1.2rem;
+        }
+
+        .link-subtext {
+          font-size: 0.73rem;
+        }
+
+        .sparkle-one {
+          top: 12%;
+          right: 18%;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .page-shell {
+          padding: 10px;
+        }
+
+        .invitation {
+          padding-right: 15px;
+          padding-left: 15px;
+        }
+
+        .welcome {
+          font-size: 2.55rem;
+        }
+
+        .welcome-hero {
+          grid-template-columns: minmax(0, 1fr) 72px;
+        }
+
+        .brand {
+          font-size: 0.6rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <article class="invitation" aria-labelledby="welcome-title">
+        <span class="sparkle sparkle-one" aria-hidden="true">✦</span>
+        <span class="sparkle sparkle-two" aria-hidden="true">✧</span>
+        <div class="ticket-content">
+          <section class="main-ticket">
+            <div class="brand">
+              <span class="brand-mark" aria-hidden="true">✦</span>
+              Sunday @ Dibyo's
+            </div>
+
+            <div class="welcome-hero">
+              <h1 class="welcome" id="welcome-title">
+                Hello,<br>
+                Guest!
+                <span>You're invited to the fun.</span>
+              </h1>
+              <div class="welcome-art">
+                <img src="assets/party-popper.svg" alt="" aria-hidden="true">
+              </div>
+            </div>
+            <p class="intro">
+              So glad you're here! This is your little corner for party memories,
+              kind words, and getting to know your hosts. Pick a ticket below and
+              come on in.
+            </p>
+
+            <nav class="quick-links" aria-labelledby="links-heading">
+              <h2 class="section-heading" id="links-heading">Your quick links</h2>
+              <div class="link-list">
+                <a class="quick-link" href="#photo-submission">
+                  <span class="link-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4 7.5h3l1.5-2h7l1.5 2h3A1.5 1.5 0 0 1 21.5 9v9a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 18V9A1.5 1.5 0 0 1 4 7.5Z"/>
+                      <circle cx="12" cy="13" r="3.5"/>
+                    </svg>
+                  </span>
+                  <span class="link-copy">
+                    <span class="link-title-row">
+                      <span class="link-label">Photo Submission</span>
+                      <span class="link-arrow" aria-hidden="true">→</span>
+                    </span>
+                    <span class="link-subtext">Share the Memories and Double the Fun!</span>
+                  </span>
+                </a>
+                <a class="quick-link" href="#review">
+                  <span class="link-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
+                    </svg>
+                  </span>
+                  <span class="link-copy">
+                    <span class="link-title-row">
+                      <span class="link-label">Leave a Review</span>
+                      <span class="link-arrow" aria-hidden="true">→</span>
+                    </span>
+                    <span class="link-subtext">Be honest—our snacks can take it.</span>
+                  </span>
+                </a>
+                <a class="quick-link" href="#about-hosts">
+                  <span class="link-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="9" cy="8" r="3"/>
+                      <path d="M3.5 19v-1.5A4.5 4.5 0 0 1 8 13h2a4.5 4.5 0 0 1 4.5 4.5V19"/>
+                      <path d="M16 5.5a3 3 0 0 1 0 5.8M17 13h.5a3.5 3.5 0 0 1 3.5 3.5V19"/>
+                    </svg>
+                  </span>
+                  <span class="link-copy">
+                    <span class="link-title-row">
+                      <span class="link-label">About the Hosts</span>
+                      <span class="link-arrow" aria-hidden="true">→</span>
+                    </span>
+                    <span class="link-subtext">Meet the folks behind the party playlist.</span>
+                  </span>
+                </a>
+              </div>
+            </nav>
+          </section>
+
+        </div>
+      </article>
+      <p class="footer-note">Made with love - Dibyojit</p>
+      <p class="art-credit">
+        Party popper by <a href="https://github.com/hfg-gmuend/openmoji/blob/master/color/svg/1F389.svg">OpenMoji</a>,
+        licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+      </p>
+    </main>
+  </body>
+</html>
