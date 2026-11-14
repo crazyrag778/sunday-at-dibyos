@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#064b38">
+    <meta
+      name="description"
+      content="Meet Dibyojit, your host, and the friends who helped make Sunday at Dibyo's special."
+    >
+    <title>About the Hosts — Sunday @ Dibyo's</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --evergreen: #064b38;
+        --cream: #f7f4e8;
+        --red: #c91618;
+        --gold: #f5c15d;
+        --ink: #173c31;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background-color: var(--evergreen);
+        background-image:
+          radial-gradient(circle at 12% 18%, rgb(245 193 93 / 24%) 0 2px, transparent 3px),
+          radial-gradient(circle at 86% 30%, rgb(255 255 255 / 20%) 0 2px, transparent 3px),
+          radial-gradient(circle at 75% 82%, rgb(245 193 93 / 22%) 0 2px, transparent 3px);
+        background-size: 88px 88px, 112px 112px, 136px 136px;
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: clamp(18px, 4vw, 56px);
+      }
+
+      .invitation {
+        position: relative;
+        isolation: isolate;
+        width: min(100%, 900px);
+        padding: clamp(24px, 5vw, 62px);
+        overflow: hidden;
+        background: var(--cream);
+        box-shadow: 0 24px 70px rgb(0 0 0 / 25%);
+        animation: ticket-arrive 750ms cubic-bezier(.2, .8, .2, 1) both;
+      }
+
+      .invitation::before,
+      .invitation::after {
+        position: absolute;
+        z-index: -1;
+        right: 0;
+        left: 0;
+        height: 18px;
+        content: "";
+        background: radial-gradient(circle at 18px 18px, var(--evergreen) 0 14px, transparent 15px)
+          repeat-x;
+        background-size: 40px 20px;
+      }
+
+      .invitation::before {
+        top: 0;
+        transform: rotate(180deg);
+      }
+
+      .invitation::after {
+        bottom: 0;
+      }
+
+      .content {
+        padding: clamp(16px, 3vw, 30px) 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        width: fit-content;
+        margin-bottom: clamp(34px, 6vw, 62px);
+        color: var(--evergreen);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        border: 1.5px solid var(--evergreen);
+        border-radius: 50%;
+        color: var(--red);
+        font-size: 1rem;
+        letter-spacing: 0;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--red);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        color: var(--evergreen);
+        font-size: clamp(2.8rem, 7vw, 5rem);
+        font-style: italic;
+        letter-spacing: -0.045em;
+        line-height: 1;
+        text-wrap: balance;
+      }
+
+      .welcome {
+        max-width: 580px;
+        margin: 18px 0 36px;
+        color: #53675c;
+        font-size: clamp(1.05rem, 2vw, 1.2rem);
+        line-height: 1.7;
+      }
+
+      .host-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(180px, 250px);
+        align-items: center;
+        gap: clamp(24px, 5vw, 52px);
+        padding: clamp(20px, 4vw, 38px);
+        border: 1px solid rgb(6 75 56 / 18%);
+        border-radius: 18px;
+        background: rgb(255 255 255 / 55%);
+      }
+
+      .host-copy h2 {
+        margin: 0;
+        color: var(--evergreen);
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-style: italic;
+        letter-spacing: -0.03em;
+      }
+
+      .host-role {
+        display: inline-flex;
+        margin: 12px 0 0;
+        padding: 7px 11px;
+        border-radius: 999px;
+        color: var(--evergreen);
+        background: #f6e8d1;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+
+      .host-note {
+        max-width: 490px;
+        margin: 20px 0 0;
+        color: #53675c;
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      .portrait-frame {
+        position: relative;
+        width: min(100%, 250px);
+        justify-self: center;
+        padding: 9px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        background: #fffdf6;
+        box-shadow: 0 14px 30px rgb(6 75 56 / 14%);
+      }
+
+      .portrait-frame::after {
+        position: absolute;
+        right: -3px;
+        bottom: 13%;
+        display: grid;
+        width: 43px;
+        height: 43px;
+        place-items: center;
+        border: 3px solid var(--cream);
+        border-radius: 50%;
+        color: var(--evergreen);
+        background: var(--gold);
+        content: "✦";
+        font-size: 1.25rem;
+      }
+
+      .portrait {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .thanks {
+        margin-top: clamp(36px, 6vw, 58px);
+        padding-top: 26px;
+        border-top: 1px solid rgb(6 75 56 / 20%);
+      }
+
+      .thanks h2 {
+        margin: 0;
+        color: var(--evergreen);
+        font-size: clamp(1.65rem, 3vw, 2.2rem);
+        font-style: italic;
+      }
+
+      .thanks-note {
+        margin: 9px 0 18px;
+        color: #64746b;
+        line-height: 1.6;
+      }
+
+      .thanks-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .thanks-list li {
+        padding: 10px 15px;
+        border: 1px solid rgb(6 75 56 / 16%);
+        border-radius: 999px;
+        color: var(--evergreen);
+        background: rgb(255 255 255 / 55%);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: clamp(32px, 5vw, 48px);
+      }
+
+      .action-link {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 12px 18px;
+        border: 1px solid var(--evergreen);
+        border-radius: 999px;
+        color: var(--evergreen);
+        background: transparent;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+      }
+
+      .action-link:hover,
+      .action-link:focus-visible {
+        transform: translateY(-2px);
+        outline: none;
+        box-shadow: 0 7px 18px rgb(6 75 56 / 14%);
+      }
+
+      .action-link:focus-visible {
+        outline: 3px solid var(--red);
+        outline-offset: 3px;
+      }
+
+      .action-link--primary {
+        border-color: var(--evergreen);
+        color: var(--cream);
+        background: var(--evergreen);
+      }
+
+      .action-link--primary:hover,
+      .action-link--primary:focus-visible {
+        background: #033b2d;
+      }
+
+      .footer-note {
+        margin: 24px 0 0;
+        color: #728078;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      @keyframes ticket-arrive {
+        from {
+          opacity: 0;
+          transform: translateY(24px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @media (max-width: 620px) {
+        .page-shell {
+          padding: 14px;
+        }
+
+        .invitation {
+          padding: 24px clamp(18px, 5vw, 30px);
+        }
+
+        .brand {
+          margin-bottom: 38px;
+          font-size: 0.67rem;
+          letter-spacing: 0.11em;
+        }
+
+        .host-card {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .portrait-frame {
+          grid-row: 1;
+          width: min(62%, 210px);
+        }
+
+        .host-copy {
+          text-align: center;
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+
+        .action-link {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <article class="invitation" aria-labelledby="page-title">
+        <div class="content">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">✦</span>
+            Sunday @ Dibyo's
+          </a>
+
+          <p class="eyebrow">A little hello from your host</p>
+          <h1 id="page-title">The people behind the party</h1>
+          <p class="welcome">
+            We're so glad you're here. This celebration means a lot, and it feels
+            even more special with you in it. Please make yourself at home.
+          </p>
+
+          <section class="host-card" aria-labelledby="host-name">
+            <div class="host-copy">
+              <h2 id="host-name">Dibyojit Datta</h2>
+              <p class="host-role">The host of this place, on his birthday</p>
+              <p class="host-note">
+                I’m grateful you chose to spend some of your day here. This little
+                gathering is better because you came, and I hope you feel welcome,
+                comfortable, and very much among friends.
+              </p>
+            </div>
+            <div class="portrait-frame">
+              <img
+                class="portrait"
+                src="https://avatars.githubusercontent.com/u/120187027"
+                alt="Dibyojit Datta"
+                width="250"
+                height="250"
+              >
+            </div>
+          </section>
+
+          <section class="thanks" aria-labelledby="thanks-heading">
+            <h2 id="thanks-heading">Special thanks</h2>
+            <p class="thanks-note">
+              A heartfelt thank-you to the friends who helped make this celebration
+              happen.
+            </p>
+            <ul class="thanks-list">
+              <li>Sounak Kundu</li>
+              <li>Gourab Karmakar</li>
+            </ul>
+          </section>
+
+          <nav class="actions" aria-label="Page links">
+            <a class="action-link action-link--primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdtcZL7ZTy4eJQr0jRL2irDbfwpz6scxGuIGe4R9n5W51xIkQ/viewform">
+              Leave a review <span aria-hidden="true">→</span>
+            </a>
+            <a class="action-link" href="index.html">Back to your quick links</a>
+          </nav>
+          <p class="footer-note">Thanks for being here — it means a lot.</p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
