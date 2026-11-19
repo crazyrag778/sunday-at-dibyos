@@ -231,7 +231,7 @@
 
       .link-list {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
       }
 
@@ -280,6 +280,75 @@
       .quick-link:disabled {
         cursor: not-allowed;
         opacity: 0.58;
+      }
+
+      .playlist {
+        margin-top: clamp(32px, 5vw, 48px);
+        padding: clamp(20px, 4vw, 32px);
+        border: 1px solid rgb(6 75 56 / 16%);
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at 100% 0, rgb(245 193 93 / 24%), transparent 34%),
+          #fffdf6;
+        box-shadow: 0 12px 30px rgb(6 75 56 / 8%);
+      }
+
+      .playlist-heading {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .playlist-mark {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 50%;
+        color: var(--evergreen);
+        background: var(--gold);
+        font-size: 1.5rem;
+      }
+
+      .playlist-eyebrow {
+        margin: 0 0 5px;
+        color: var(--red);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .playlist h2 {
+        margin: 0;
+        color: var(--evergreen);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-style: italic;
+        line-height: 1.15;
+      }
+
+      .playlist-description {
+        margin: 7px 0 0;
+        color: #64746b;
+        font-size: 0.96rem;
+        line-height: 1.5;
+      }
+
+      .playlist-embed {
+        margin-top: 22px;
+        overflow: hidden;
+        border-radius: 12px;
+        background: #121212;
+        box-shadow: 0 8px 20px rgb(0 0 0 / 14%);
+      }
+
+      .playlist-embed iframe {
+        display: block;
+        width: 100%;
+        height: 352px;
+        border: 0;
       }
 
       .quick-link--gallery {
@@ -742,6 +811,28 @@
                 </a>
               </div>
             </nav>
+            <section class="playlist" aria-labelledby="playlist-heading">
+              <div class="playlist-heading">
+                <span class="playlist-mark" aria-hidden="true">♫</span>
+                <div>
+                  <p class="playlist-eyebrow">Press play, party starts</p>
+                  <h2 id="playlist-heading">The official party playlist</h2>
+                  <p class="playlist-description">
+                    Good tunes, great company. Here's the soundtrack for our celebration.
+                  </p>
+                </div>
+              </div>
+              <div class="playlist-embed">
+                <iframe
+                  data-testid="embed-iframe"
+                  title="The official Sunday at Dibyo's party playlist on Spotify"
+                  src="https://open.spotify.com/embed/playlist/3jITtqZtFC3soQZ0xCtIG3?utm_source=generator&amp;si=4e818e2b6ee54e79"
+                  allowfullscreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </section>
           </section>
 
         </div>
