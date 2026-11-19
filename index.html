@@ -377,6 +377,13 @@
       }
 
       .quick-link--gallery {
+        grid-column: 1 / -1;
+        min-height: 136px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 18px;
+        padding: 22px;
         border-color: var(--gold);
         color: var(--cream);
         background: var(--evergreen);
@@ -384,8 +391,24 @@
       }
 
       .quick-link--gallery .link-icon {
+        width: 52px;
+        height: 52px;
+        flex: 0 0 auto;
         color: var(--evergreen);
         background: var(--gold);
+      }
+
+      .quick-link--gallery .link-icon svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .quick-link--gallery .link-copy {
+        flex: 1;
+      }
+
+      .quick-link--gallery .link-label {
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
       }
 
       .quick-link--gallery .link-subtext {
@@ -404,69 +427,6 @@
         letter-spacing: 0.06em;
         line-height: 1;
         text-transform: uppercase;
-      }
-
-      .gallery-dialog {
-        width: min(calc(100% - 32px), 480px);
-        padding: clamp(26px, 6vw, 42px);
-        border: 1px solid var(--gold);
-        border-radius: 18px;
-        color: var(--ink);
-        background: var(--cream);
-        box-shadow: 0 24px 70px rgb(0 0 0 / 30%);
-        text-align: center;
-      }
-
-      .gallery-dialog::backdrop {
-        background: rgb(3 35 26 / 72%);
-        backdrop-filter: blur(4px);
-      }
-
-      .gallery-dialog-icon {
-        display: grid;
-        width: 58px;
-        height: 58px;
-        margin: 0 auto 18px;
-        place-items: center;
-        border-radius: 50%;
-        color: var(--evergreen);
-        background: var(--gold);
-        font-size: 1.8rem;
-      }
-
-      .gallery-dialog h2 {
-        margin: 0;
-        color: var(--evergreen);
-        font-size: clamp(1.7rem, 5vw, 2.2rem);
-        font-style: italic;
-      }
-
-      .gallery-dialog p {
-        margin: 14px 0 24px;
-        color: #53675c;
-        line-height: 1.65;
-      }
-
-      .gallery-dialog-close {
-        min-height: 44px;
-        padding: 10px 22px;
-        border: 0;
-        border-radius: 999px;
-        color: var(--cream);
-        background: var(--evergreen);
-        cursor: pointer;
-        font: 700 0.9rem Arial, Helvetica, sans-serif;
-        transition: background-color 180ms ease, transform 180ms ease;
-      }
-
-      .gallery-dialog-close:hover {
-        transform: translateY(-2px);
-        background: var(--evergreen-deep);
-      }
-
-      .gallery-dialog-close:focus-visible {
-        outline: 3px solid var(--red);
-        outline-offset: 3px;
       }
 
       .link-icon {
@@ -682,6 +642,22 @@
           padding: 12px;
         }
 
+        .quick-link--gallery {
+          min-height: 96px;
+          gap: 13px;
+          padding: 15px;
+        }
+
+        .quick-link--gallery .link-icon {
+          width: 44px;
+          height: 44px;
+        }
+
+        .quick-link--gallery .link-icon svg {
+          width: 23px;
+          height: 23px;
+        }
+
         .link-copy {
           flex: 1;
         }
@@ -803,7 +779,7 @@
             <nav class="quick-links" aria-labelledby="links-heading">
               <h2 class="section-heading" id="links-heading">Your quick links</h2>
               <div class="link-list">
-                <button class="quick-link quick-link--gallery" id="gallery-link" type="button" aria-haspopup="dialog" aria-controls="gallery-dialog">
+                <a class="quick-link quick-link--gallery" href="https://sites.google.com/view/sad26-photo-gallery/home">
                   <span class="link-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24">
                       <rect x="3" y="4" width="18" height="16" rx="2"/>
@@ -814,11 +790,11 @@
                   <span class="link-copy">
                     <span class="link-title-row">
                       <span class="link-label">Party Photo Gallery</span>
-                      <span class="link-badge">Coming Soon</span>
+                      <span class="link-badge">Open Gallery</span>
                     </span>
-                    <span class="link-subtext">Photo gallery opens on 02.12.26, after all photos are submitted.</span>
+                    <span class="link-subtext">Relive the fun—browse photos from the party.</span>
                   </span>
-                </button>
+                </a>
                 <a class="quick-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd3kfEow_CGvgDv6Q8xykgQmQdB-Smcf-lUFLPgGtjVknKHZg/viewform?usp=dialog">
                   <span class="link-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24">
@@ -894,22 +870,5 @@
       </article>
       <p class="footer-note">Made with love - Dibyojit</p>
     </main>
-    <dialog class="gallery-dialog" id="gallery-dialog" aria-labelledby="gallery-dialog-title" aria-describedby="gallery-dialog-message">
-      <span class="gallery-dialog-icon" aria-hidden="true">✦</span>
-      <h2 id="gallery-dialog-title">One little thing first</h2>
-      <p id="gallery-dialog-message">
-        Please submit all your photos, then come back on 02.12.26 to see the gallery.
-        We can’t wait to welcome you back and look through the memories together!
-      </p>
-      <button class="gallery-dialog-close" type="button" autofocus>Got it</button>
-    </dialog>
-    <script>
-      const galleryLink = document.querySelector("#gallery-link");
-      const galleryDialog = document.querySelector("#gallery-dialog");
-      const galleryDialogClose = galleryDialog.querySelector(".gallery-dialog-close");
-
-      galleryLink.addEventListener("click", () => galleryDialog.showModal());
-      galleryDialogClose.addEventListener("click", () => galleryDialog.close());
-    </script>
   </body>
 </html>
