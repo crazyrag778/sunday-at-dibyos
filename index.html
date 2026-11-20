@@ -27,9 +27,11 @@
 
       html {
         scroll-behavior: smooth;
+        width: 100%;
       }
 
       body {
+        width: 100%;
         min-height: 100vh;
         margin: 0;
         overflow-x: hidden;
@@ -45,6 +47,12 @@
 
       a {
         color: inherit;
+      }
+
+      img,
+      svg,
+      iframe {
+        max-width: 100%;
       }
 
       .page-shell {
@@ -257,15 +265,14 @@
       .link-list {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(3, minmax(88px, auto));
         gap: 12px;
       }
 
       .quick-link {
         display: flex;
-        min-height: 112px;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
+        min-height: 88px;
+        align-items: center;
         gap: 14px;
         padding: 16px;
         border: 1px solid rgb(6 75 56 / 18%);
@@ -284,7 +291,7 @@
 
       .quick-link:not(:disabled):hover,
       .quick-link:not(:disabled):focus-visible {
-        transform: translateY(-5px) rotate(-1deg);
+        transform: translateY(-4px);
         border-color: var(--gold);
         outline: none;
         background: #fffdf6;
@@ -362,6 +369,8 @@
       }
 
       .playlist-embed {
+        width: 100%;
+        min-width: 0;
         margin-top: 22px;
         overflow: hidden;
         border-radius: 12px;
@@ -372,18 +381,21 @@
       .playlist-embed iframe {
         display: block;
         width: 100%;
+        min-width: 0;
         height: 352px;
         border: 0;
       }
 
       .quick-link--gallery {
-        grid-column: 1 / -1;
-        min-height: 136px;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 18px;
-        padding: 22px;
+        grid-column: 1;
+        grid-row: 1 / 4;
+        min-height: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 24px;
+        padding: clamp(22px, 3vw, 32px);
+        border-radius: 18px;
         border-color: var(--gold);
         color: var(--cream);
         background: var(--evergreen);
@@ -391,28 +403,33 @@
       }
 
       .quick-link--gallery .link-icon {
-        width: 52px;
-        height: 52px;
+        width: 60px;
+        height: 60px;
         flex: 0 0 auto;
         color: var(--evergreen);
         background: var(--gold);
       }
 
       .quick-link--gallery .link-icon svg {
-        width: 26px;
-        height: 26px;
+        width: 30px;
+        height: 30px;
       }
 
       .quick-link--gallery .link-copy {
-        flex: 1;
+        width: 100%;
       }
 
       .quick-link--gallery .link-label {
-        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        font-size: clamp(1.2rem, 2vw, 1.55rem);
       }
 
       .quick-link--gallery .link-subtext {
         color: rgb(247 244 232 / 78%);
+      }
+
+      .quick-link--gallery .link-title-row {
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
       .link-badge {
@@ -585,10 +602,17 @@
 
       @media (max-width: 700px) {
         .page-shell {
-          padding: 14px;
+          align-items: start;
+          padding:
+            max(10px, env(safe-area-inset-top))
+            max(10px, env(safe-area-inset-right))
+            max(10px, env(safe-area-inset-bottom))
+            max(10px, env(safe-area-inset-left));
         }
 
         .invitation {
+          width: 100%;
+          border-radius: 18px;
           padding: 24px clamp(18px, 5vw, 30px);
         }
 
@@ -619,9 +643,18 @@
 
         .party-date {
           max-width: 100%;
+          align-items: flex-start;
           margin-top: 16px;
           padding: 9px 12px;
           font-size: 0.82rem;
+        }
+
+        .party-date-copy {
+          min-width: 0;
+        }
+
+        .party-date time {
+          overflow-wrap: anywhere;
         }
 
         .quick-links {
@@ -630,32 +663,35 @@
 
         .link-list {
           grid-template-columns: 1fr;
+          grid-template-rows: none;
           gap: 10px;
         }
 
         .quick-link {
           min-height: 70px;
-          flex-direction: row;
-          align-items: center;
-          justify-content: flex-start;
           gap: 13px;
           padding: 12px;
         }
 
         .quick-link--gallery {
-          min-height: 96px;
+          grid-column: 1;
+          grid-row: auto;
+          min-height: 120px;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
           gap: 13px;
           padding: 15px;
         }
 
         .quick-link--gallery .link-icon {
-          width: 44px;
-          height: 44px;
+          width: 48px;
+          height: 48px;
         }
 
         .quick-link--gallery .link-icon svg {
-          width: 23px;
-          height: 23px;
+          width: 25px;
+          height: 25px;
         }
 
         .link-copy {
@@ -673,9 +709,13 @@
           gap: 6px 8px;
         }
 
+        .quick-link--gallery .link-label {
+          font-size: 1.1rem;
+        }
+
         .link-label {
           font-size: 1rem;
-          white-space: nowrap;
+          white-space: normal;
         }
 
         .quick-link--gallery .link-label {
@@ -690,6 +730,19 @@
           font-size: 0.73rem;
         }
 
+        .playlist {
+          border-radius: 16px;
+        }
+
+        .playlist-heading {
+          gap: 10px;
+        }
+
+        .playlist-mark {
+          width: 38px;
+          height: 38px;
+        }
+
         .sparkle-one {
           top: 12%;
           right: 18%;
@@ -702,6 +755,7 @@
         }
 
         .invitation {
+          border-radius: 14px;
           padding-right: 15px;
           padding-left: 15px;
         }
@@ -716,6 +770,58 @@
 
         .brand {
           font-size: 0.6rem;
+        }
+
+        .welcome-hero {
+          grid-template-columns: minmax(0, 1fr) 62px;
+        }
+
+        .party-date {
+          width: 100%;
+        }
+
+        .party-date-hint {
+          line-height: 1.25;
+        }
+
+        .quick-link,
+        .quick-link--gallery {
+          padding-right: 10px;
+          padding-left: 10px;
+        }
+
+        .quick-link--gallery {
+          gap: 9px;
+        }
+
+        .quick-link--gallery .link-icon {
+          width: 44px;
+          height: 44px;
+        }
+
+        .link-title-row,
+        .quick-link--gallery .link-title-row {
+          gap: 5px;
+        }
+
+        .link-badge {
+          max-width: 100%;
+        }
+
+        .playlist {
+          padding: 16px 12px;
+        }
+
+        .playlist-heading {
+          align-items: center;
+        }
+
+        .playlist h2 {
+          font-size: 1.35rem;
+        }
+
+        .playlist-description {
+          font-size: 0.88rem;
         }
       }
 
@@ -756,8 +862,8 @@
             <p class="intro">
               So glad you're here! This is your little corner for party memories,
               kind words, and getting to know your hosts. Use Photo Submission to
-              share your photo booth snaps, then come back on 02.12.26 to browse
-              the gallery.
+              share your photo booth snaps, then browse the gallery to relive
+              the celebration.
             </p>
             <a
               class="party-date"
@@ -777,7 +883,7 @@
             </a>
 
             <nav class="quick-links" aria-labelledby="links-heading">
-              <h2 class="section-heading" id="links-heading">Your quick links</h2>
+              <h2 class="section-heading" id="links-heading">Check Out These Links!</h2>
               <div class="link-list">
                 <a class="quick-link quick-link--gallery" href="https://sites.google.com/view/sad26-photo-gallery/home">
                   <span class="link-icon" aria-hidden="true">
@@ -790,9 +896,9 @@
                   <span class="link-copy">
                     <span class="link-title-row">
                       <span class="link-label">Party Photo Gallery</span>
-                      <span class="link-badge">Open Gallery</span>
+                      <span class="link-badge">02.12.2026</span>
                     </span>
-                    <span class="link-subtext">Relive the fun—browse photos from the party.</span>
+                    <span class="link-subtext">Relive the fun—browse photos from the party. Check out the highlights!</span>
                   </span>
                 </a>
                 <a class="quick-link" href="https://docs.google.com/forms/d/e/1FAIpQLSd3kfEow_CGvgDv6Q8xykgQmQdB-Smcf-lUFLPgGtjVknKHZg/viewform?usp=dialog">

@@ -25,11 +25,14 @@
 
       html {
         scroll-behavior: smooth;
+        width: 100%;
       }
 
       body {
+        width: 100%;
         min-height: 100vh;
         margin: 0;
+        overflow-x: hidden;
         color: var(--ink);
         background-color: var(--evergreen);
         background-image:
@@ -42,6 +45,11 @@
 
       a {
         color: inherit;
+      }
+
+      img,
+      svg {
+        max-width: 100%;
       }
 
       .page-shell {
@@ -212,6 +220,7 @@
       .portrait {
         display: block;
         width: 100%;
+        height: auto;
         aspect-ratio: 1;
         border-radius: 50%;
         object-fit: cover;
@@ -327,11 +336,27 @@
 
       @media (max-width: 620px) {
         .page-shell {
-          padding: 14px;
+          align-items: start;
+          padding:
+            max(10px, env(safe-area-inset-top))
+            max(10px, env(safe-area-inset-right))
+            max(10px, env(safe-area-inset-bottom))
+            max(10px, env(safe-area-inset-left));
         }
 
         .invitation {
+          width: 100%;
+          border-radius: 18px;
           padding: 24px clamp(18px, 5vw, 30px);
+        }
+
+        h1 {
+          font-size: clamp(2.35rem, 13vw, 3.6rem);
+          overflow-wrap: anywhere;
+        }
+
+        .welcome {
+          margin-bottom: 26px;
         }
 
         .brand {
@@ -342,11 +367,12 @@
 
         .host-card {
           grid-template-columns: minmax(0, 1fr);
+          border-radius: 16px;
         }
 
         .portrait-frame {
           grid-row: 1;
-          width: min(62%, 210px);
+          width: min(100%, 210px);
         }
 
         .host-copy {
@@ -359,6 +385,55 @@
 
         .action-link {
           width: 100%;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .page-shell {
+          padding: 10px;
+        }
+
+        .invitation {
+          border-radius: 14px;
+          padding-right: 15px;
+          padding-left: 15px;
+        }
+
+        .brand {
+          max-width: 100%;
+          font-size: 0.6rem;
+        }
+
+        h1 {
+          font-size: 2.25rem;
+        }
+
+        .host-card {
+          padding: 18px 14px;
+        }
+
+        .portrait-frame {
+          width: min(82%, 190px);
+        }
+
+        .host-copy h2 {
+          font-size: 1.85rem;
+          overflow-wrap: anywhere;
+        }
+
+        .host-role {
+          max-width: 100%;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .thanks-list {
+          flex-direction: column;
+        }
+
+        .thanks-list li {
+          width: 100%;
+          text-align: center;
         }
       }
 
